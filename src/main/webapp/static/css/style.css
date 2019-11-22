@@ -89,7 +89,13 @@ footer {
 	background-image: url("../../upload-usr/images/background4.jpg");
 }
 
+.background-order{
+	background-image: url("../../upload-usr/images/background6.jpg");
+}
 
+.background-orderList{
+	background-image: url("../../upload-usr/images/background7.jpg");
+}
 .demo-container, .login-container, .account-container {
 	padding: 5px;
 	border: 2px solid #ccc;

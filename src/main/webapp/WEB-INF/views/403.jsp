@@ -1,43 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+
 <!DOCTYPE html>
 <html>
 
 <head>
-   <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-   <title>Access Denied</title>
+<title>Access Denied</title>
+<%@include file="/common/taglib.jsp"%>
 
-   <link href="<c:url value='/static/css/style.css' />" rel="stylesheet">
-   </link>
-   <link href="<c:url value='/static/css/ace.min.css' />" rel="stylesheet">
-   </link>
-   <link href="<c:url value='/static/css/bootstrap.min.css' />" rel="stylesheet">
-   </link>
-   <link href="<c:url value='/static/css/font-awesome.min.css' />" rel="stylesheet">
-   </link>
 </head>
-
-<body>
-
-
-   <jsp:include page="_header.jsp" />
-
-
-   <div class="page-title">Access Denied!</div>
-
-   <h3 style="color:red;">Sorry, you can not access this page!</h3>
+<body
+	class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-topbar c-layout-header-topbar-collapse"
+	style="background-image: none;">
+	<jsp:include page="_header.jsp" />
 
 
-   <!-- icon-arrow-up -->
-   <div class="c-layout-go2top" style="display: block;">
-      <i class="icon-arrow-up"></i>
-   </div>
+	<div class="c-layout-page ">
+		<!-- BEGIN: PAGE CONTENT -->
+
+		<div class="container c-size-md ">
+			<div class="col-md-12" style="min-height: 550px;">
+
+				<div class="page-title">Access Denied!</div>
+
+				<h3 style="color: red;">Sorry, you can not access this page!</h3>
 
 
+				<!-- icon-arrow-up -->
+				<div class="c-layout-go2top" style="display: block;">
+					<i class="icon-arrow-up"></i>
+				</div>
 
 
-   <%--  <jsp:include page="_footer.jsp" /> --%>
-   <%@include file="/WEB-INF/views/_footer.jsp" %>
+			</div>
+
+		</div>
+
+		<!-- END: PAGE CONTENT -->
+	</div>
+
+	<%--  <jsp:include page="_footer.jsp" /> --%>
+	<%@include file="/WEB-INF/views/_footer.jsp"%>
+
 
 </body>
-
 </html>

@@ -18,7 +18,7 @@
 
 
 	<fmt:setLocale value="en_US" scope="session" />
-	<div class="c-layout-page">
+	<div class="c-layout-page background-orderList">
 		<!-- BEGIN: PAGE CONTENT -->
 
 		<div class="container c-size-md ">

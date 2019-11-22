@@ -53,30 +53,19 @@ public class ApplicationContextConfig {
     @Bean(name = "messageSource")
     public MessageSource getMessageResource()  {
         ReloadableResourceBundleMessageSource messageResource= new ReloadableResourceBundleMessageSource();
-   
-         
-        // Đọc vào file i18n/messages_xxx.properties
-        // Ví dụ: i18n/message_en.properties
-      
         messageResource.setBasename("classpath:i18n/messages");
         messageResource.setDefaultEncoding("UTF-8");
         
         return messageResource;
     }
     
-    // multi languages
-    // localeResolver - Chỉ định cách lấy thông tin địa phương (Locale) mà người dùng sẽ sử dụng. CookieLocaleResolver 
-    // sẽ đọc thông tin Locale từ Cookie, để biết người dùng trước đó đã sử dụng trang web với ngôn ngữ nào.
-/*    @Bean(name = "localeResolver")
+    @Bean(name = "localeResolver")
     public LocaleResolver getLocaleResolver()  {
-        CookieLocaleResolver resolver= new CookieLocaleResolver();
-        resolver.setCookieDomain("myAppLocaleCookie");
-      
-        // 60 phút.
-        resolver.setCookieMaxAge(60*60);
-        return resolver;
+    	SessionLocaleResolver resolver=new SessionLocaleResolver();
+		return resolver;
     }
-     */
+    
+    
     // Config for Upload.
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver multipartResolver() {
@@ -102,17 +91,7 @@ public class ApplicationContextConfig {
          
         return dataSource;
     }
-    
- 
-        @Bean(name = "localeResolver")
-        public LocaleResolver getLocaleResolver()  {
-        	SessionLocaleResolver resolver=new SessionLocaleResolver();
-    		
-    		return resolver;
-        }
-        
-    
- 
+     
     @Autowired
     @Bean(name = "sessionFactory")
     public SessionFactory getSessionFactory(DataSource dataSource) throws Exception {
@@ -145,11 +124,11 @@ public class ApplicationContextConfig {
         return transactionManager;
     }
  
-    @Bean(name = "accountDAO")
+  /*  @Bean(name = "accountDAO")
     public AccountDAO getApplicantDAO() {
         return new AccountDAOImpl();
     }
- 
+ */
     @Bean(name = "productDAO")
     public ProductDAO getProductDAO() {
         return new ProductDAOImpl();
