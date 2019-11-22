@@ -1,0 +1,94 @@
+@media screen and (max-width: 991px) {
+	.c-mobile-logo {
+		position: absolute;
+		left: calc(50% - 5%);
+		left: -webkit-calc(50% - 5%);
+		top: 1.5vh;
+	}
+	.c-btn-uppercase.btn-sm {
+		padding: 3px 9px 0px 7px
+	}
+	.c-btn-border-1x.c-btn-dark {
+		border-color: #2f353b;
+		color: #2f353b;
+		background: none;
+		font-size: 1.1vh;
+		border-color: #2f353b;
+	}
+	.button_top {
+		margin: 0 !important;
+		position: absolute;
+		top: 2.5vh;
+		left: 0.2vh;
+	}
+	.top_button {
+		float: left;
+		margin-left: 0.5vh
+	}
+	.float_right {
+		display: none !important;
+	}
+}
+
+@media only screen and (min-width: 1290px) {
+	.nav_container {
+		position: relative;
+	}
+	.c-pull-left.absolute_pos {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		margin: 0;
+		top: -10px
+	}
+	.c-page-on-scroll .c-pull-left.absolute_pos {
+		top: 0px
+	}
+	.c-layout-header .c-brand {
+		margin: 0 !important;
+	}
+	.c-pull-left h1 {
+		width: 100%;
+		display: block;
+	}
+	.c-logo {
+		display: block;
+	}
+	.c-logo img {
+		margin: 0 auto
+	}
+	.c-layout-header .c-brand .c-desktop-logo {
+		height: 135px !important;
+		display: block;
+	}
+	.c-page-on-scroll.c-layout-header-fixed .c-layout-header .c-brand .c-desktop-logo
+		{
+		display: none !important;
+	}
+	.c-layout-header .c-navbar .c-mega-menu.c-pull-right {
+		float: left;
+		width: 100%;
+	}
+	.float_right {
+		float: right !important
+	}
+	.c-layout-header .c-navbar .c-mega-menu>.nav.navbar-nav {
+		width: 100%
+	}
+	.c-page-on-scroll.c-layout-header-fixed .c-layout-header .c-brand .c-desktop-logo-inverse
+		{
+		height: 85px !important;
+	}
+}
+
+.c-menu-type-mega:hover {
+	transition-delay: 1s;
+}
+
+.c-layout-header.c-layout-header-4 .c-navbar .c-mega-menu>.nav.navbar-nav>li:focus>a:not
+	(.btn ), .c-layout-header.c-layout-header-4 .c-navbar .c-mega-menu>.nav.navbar-nav>li:active>a:not
+	(.btn ), .c-layout-header.c-layout-header-4 .c-navbar .c-mega-menu>.nav.navbar-nav>li:hover>a:not
+	(.btn ) {
+	color: #3a3f45;
+	background: #FAFAFA;
+}
