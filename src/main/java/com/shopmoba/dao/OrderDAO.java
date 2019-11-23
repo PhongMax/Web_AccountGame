@@ -2,10 +2,10 @@ package com.shopmoba.dao;
  
 import java.util.List;
 
-import com.shopmoba.model.CartInfo;
-import com.shopmoba.model.OrderDetailInfo;
-import com.shopmoba.model.OrderInfo;
-import com.shopmoba.model.PaginationResult;
+import com.shopmoba.service.CartInfo;
+import com.shopmoba.service.OrderDetailInfo;
+import com.shopmoba.service.OrderInfo;
+import com.shopmoba.service.PaginationResult;
  
 public interface OrderDAO {
  

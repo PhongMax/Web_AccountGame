@@ -23,16 +23,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shopmoba.dao.OrderDAO;
 import com.shopmoba.dao.ProductDAO;
-import com.shopmoba.entity.Product;
-import com.shopmoba.model.CartInfo;
-import com.shopmoba.model.CustomerInfo;
-import com.shopmoba.model.PaginationResult;
-import com.shopmoba.model.ProductInfo;
+import com.shopmoba.model.Product;
+import com.shopmoba.service.CartInfo;
+import com.shopmoba.service.CustomerInfo;
+import com.shopmoba.service.PaginationResult;
+import com.shopmoba.service.ProductInfo;
 import com.shopmoba.util.Utils;
 import com.shopmoba.validator.CustomerInfoValidator;
  
 @Controller
-// Enable Hibernate Transaction.
 @Transactional
 // Need to use RedirectAttributes
 @EnableWebMvc
@@ -83,21 +82,20 @@ public class MainController {
     // Product List page.
     // Danh sách sản phẩm.
     @RequestMapping({ "/productList" })
-    public String listProductHandler(Model model, //
+    public String listProductHandler(Model model,
             @RequestParam(value = "name", defaultValue = "") String likeName,
             @RequestParam(value = "page", defaultValue = "1") int page) {
         final int maxResult = 5;
         final int maxNavigationPage = 10;
  
-        PaginationResult<ProductInfo> result = productDAO.queryProducts(page, //
-                maxResult, maxNavigationPage, likeName);
+        PaginationResult<ProductInfo> result = productDAO.queryProducts(page, maxResult, maxNavigationPage, likeName);
  
         model.addAttribute("paginationProducts", result);
         return "productList";
     }
  
     @RequestMapping({ "/buyProduct" })
-    public String listProductHandler(HttpServletRequest request, Model model, //
+    public String listProductHandler(HttpServletRequest request, Model model,
             @RequestParam(value = "code", defaultValue = "") String code) {
  
         Product product = null;
@@ -118,7 +116,7 @@ public class MainController {
     }
  
     @RequestMapping({ "/shoppingCartRemoveProduct" })
-    public String removeProductHandler(HttpServletRequest request, Model model, //
+    public String removeProductHandler(HttpServletRequest request, Model model, 
             @RequestParam(value = "code", defaultValue = "") String code) {
         Product product = null;
         if (code != null && code.length() > 0) {
@@ -140,7 +138,7 @@ public class MainController {
  
     // POST: Update quantity of products in cart.
     @RequestMapping(value = { "/shoppingCart" }, method = RequestMethod.POST)
-    public String shoppingCartUpdateQty(HttpServletRequest request, //
+    public String shoppingCartUpdateQty(HttpServletRequest request, 
             Model model, //
             @ModelAttribute("cartForm") CartInfo cartForm) {
  
@@ -185,10 +183,10 @@ public class MainController {
  
     // POST: Save customer information.
     @RequestMapping(value = { "/shoppingCartCustomer" }, method = RequestMethod.POST)
-    public String shoppingCartCustomerSave(HttpServletRequest request, //
-            Model model, //
+    public String shoppingCartCustomerSave(HttpServletRequest request, 
+            Model model, 
             @ModelAttribute("customerForm") @Validated CustomerInfo customerForm, //
-            BindingResult result, //
+            BindingResult result, 
             final RedirectAttributes redirectAttributes) {
   
         // If has Errors.

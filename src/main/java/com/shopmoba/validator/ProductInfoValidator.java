@@ -7,8 +7,8 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.shopmoba.dao.ProductDAO;
-import com.shopmoba.entity.Product;
-import com.shopmoba.model.ProductInfo;
+import com.shopmoba.model.Product;
+import com.shopmoba.service.ProductInfo;
  
 // @Component: As a Bean.
 @Component

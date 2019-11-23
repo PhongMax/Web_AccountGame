@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.shopmoba.dao.AccountDAO;
-import com.shopmoba.entity.Account;
+import com.shopmoba.model.Account;
  
 @Service
 public class MyDBAuthenticationService implements UserDetailsService {
@@ -24,7 +24,9 @@ public class MyDBAuthenticationService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountDAO.findAccount(username);
-        /*System.out.println("Account= " + account); */
+       
+        System.out.println("Account= " + account);
+        
         if (account == null) {
             throw new UsernameNotFoundException("User " //
                     + username + " was not found in the database");

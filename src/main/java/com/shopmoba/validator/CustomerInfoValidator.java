@@ -6,7 +6,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.shopmoba.model.CustomerInfo;
+import com.shopmoba.service.CustomerInfo;
  
 // @Component: As a Bean.
 @Component

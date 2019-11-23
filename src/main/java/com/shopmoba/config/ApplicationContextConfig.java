@@ -106,7 +106,7 @@ public class ApplicationContextConfig {
         LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
          
         // Package contain entity classes
-        factoryBean.setPackagesToScan(new String[] { "com.shopmoba.entity" });
+        factoryBean.setPackagesToScan(new String[] { "com.shopmoba.model" });
         factoryBean.setDataSource(dataSource);
         factoryBean.setHibernateProperties(properties);
         factoryBean.afterPropertiesSet();

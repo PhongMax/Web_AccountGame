@@ -1,8 +1,8 @@
-package com.shopmoba.model;
+package com.shopmoba.service;
  
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-import com.shopmoba.entity.Product;
+import com.shopmoba.model.Product;
  
 public class ProductInfo {
     private String code;
