@@ -6,5 +6,5 @@ public interface AccountDAO {
  
     
     public Account findAccount(String userName );
-    
+    public void saveAccount(Account account);
 }

@@ -90,7 +90,7 @@
 							</a></li>
 
 						<security:authorize access="hasRole('ROLE_MANAGER')">
-							<li class="top_buttonfloat_right"><a href="${pageContext.request.contextPath}/register"
+							<li class="top_buttonfloat_right"><a href="${pageContext.request.contextPath}/signup"
 									class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-dark c-btn-circle c-btn-uppercase c-btn-sbold">
 									<i class="icon-key icons"></i>
 									<s:message code="index.login" />
@@ -159,7 +159,7 @@
 								</a></li>
 
 							<security:authorize access="hasRole('ROLE_MANAGER')">
-								<li class="float_right"><a href="${pageContext.request.contextPath}/register"
+								<li class="float_right"><a href="${pageContext.request.contextPath}/signup"
 										class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-dark c-btn-circle c-btn-uppercase c-btn-sbold">
 										<i class="icon-key icons"></i>
 										<s:message code="index.signup" />
@@ -226,7 +226,7 @@
 								</a></li>
 
 							<security:authorize access="hasRole('ROLE_MANAGER')">
-								<li class="float_right"><a href="${pageContext.request.contextPath}/register"
+								<li class="float_right"><a href="${pageContext.request.contextPath}/signup"
 										class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-dark c-btn-circle c-btn-uppercase c-btn-sbold">
 										<i class="icon-key icons"></i>
 										<s:message code="index.signup" />

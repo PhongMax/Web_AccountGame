@@ -76,25 +76,35 @@ footer {
 	padding: 5px;
 }
 
-.background-product{
+.background-product {
 	background-image: url("../../upload-usr/images/background1.jpg");
 }
-.background-productlist{
+
+.background-productlist {
 	background-image: url("../../upload-usr/images/background2.jpg");
 }
-.background-shoppingCart{
+
+.background-shoppingCart {
 	background-image: url("../../upload-usr/images/background3.jpg");
 }
+
 .background-shoppincart-customer {
 	background-image: url("../../upload-usr/images/background4.jpg");
 }
 
-.background-order{
+.background-order {
 	background-image: url("../../upload-usr/images/background6.jpg");
 }
 
-.background-orderList{
+.background-orderList {
 	background-image: url("../../upload-usr/images/background7.jpg");
+}
+
+.background-singup{
+	background-image: url("../../upload-usr/images/background7.jpg");
+}
+.background-success{
+	background-image: url("../../upload-usr/images/background8.png");
 }
 .demo-container, .login-container, .account-container {
 	padding: 5px;
@@ -178,4 +188,31 @@ ul {
 
 table td {
 	padding: 5px;
+}
+
+.login-box, .register-box {
+	width: 400px;
+	margin: 7% auto;
+	padding: 20px;;
+}
+
+@media ( max-width : 767px) {
+	.login-box, .register-box {
+		width: 100%;
+	}
+}
+
+.login-box-msg, .register-box-msg {
+	margin: 0;
+	text-align: center;
+	padding: 0 20px 20px 20px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.box-custom {
+	border: 1px solid #cccccc;
+	padding: 20px;
+	color: #666;
 }

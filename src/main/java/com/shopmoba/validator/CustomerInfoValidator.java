@@ -8,7 +8,6 @@ import org.springframework.validation.Validator;
 
 import com.shopmoba.service.CustomerInfo;
  
-// @Component: As a Bean.
 @Component
 public class CustomerInfoValidator implements Validator {
  

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.shopmoba.dao.AccountDAO;
 import com.shopmoba.dao.OrderDAO;
 import com.shopmoba.dao.ProductDAO;
 import com.shopmoba.model.Product;
@@ -45,7 +46,8 @@ public class MainController {
  
     @Autowired
     private CustomerInfoValidator customerInfoValidator;
-
+    
+ 
     @InitBinder
     public void myInitBinder(WebDataBinder dataBinder) {
         Object target = dataBinder.getTarget();
@@ -79,7 +81,7 @@ public class MainController {
         return "index";
     }
  
-    // Product List page.
+
     // Danh sách sản phẩm.
     @RequestMapping({ "/productList" })
     public String listProductHandler(Model model,
@@ -139,7 +141,7 @@ public class MainController {
     // POST: Update quantity of products in cart.
     @RequestMapping(value = { "/shoppingCart" }, method = RequestMethod.POST)
     public String shoppingCartUpdateQty(HttpServletRequest request, 
-            Model model, //
+            Model model, 
             @ModelAttribute("cartForm") CartInfo cartForm) {
  
         CartInfo cartInfo = Utils.getCartInSession(request);
@@ -185,7 +187,7 @@ public class MainController {
     @RequestMapping(value = { "/shoppingCartCustomer" }, method = RequestMethod.POST)
     public String shoppingCartCustomerSave(HttpServletRequest request, 
             Model model, 
-            @ModelAttribute("customerForm") @Validated CustomerInfo customerForm, //
+            @ModelAttribute("customerForm") @Validated CustomerInfo customerForm, 
             BindingResult result, 
             final RedirectAttributes redirectAttributes) {
   
@@ -201,7 +203,7 @@ public class MainController {
  
         cartInfo.setCustomerInfo(customerForm);
  
-        // Redirect to Confirmation page.
+   
         return "redirect:/shoppingCartConfirmation";
     }
  

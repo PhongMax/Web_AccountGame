@@ -21,12 +21,15 @@ import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.shopmoba.dao.AccountDAO;
 import com.shopmoba.dao.OrderDAO;
 import com.shopmoba.dao.ProductDAO;
+import com.shopmoba.model.Account;
 import com.shopmoba.service.OrderDetailInfo;
 import com.shopmoba.service.OrderInfo;
 import com.shopmoba.service.PaginationResult;
 import com.shopmoba.service.ProductInfo;
+import com.shopmoba.util.SecurityUltil;
 import com.shopmoba.validator.ProductInfoValidator;
  
 @Controller
@@ -44,6 +47,8 @@ public class AdminController {
     @Autowired
     private ProductInfoValidator productInfoValidator;
  
+    @Autowired
+    private AccountDAO accountDAO;
     
  
     @InitBinder
@@ -61,6 +66,19 @@ public class AdminController {
         }
     }
  
+    // GET: Show Sign up Page
+    @RequestMapping(value = { "/signup" }, method = RequestMethod.GET)
+    public String signup(Model model) {
+ 
+        return "Signup";
+    }
+    
+    // POST: Show Sign up Page, save account
+    @RequestMapping(value = { "/signup" }, method = RequestMethod.POST)
+    public String signupSave(Model model) {
+ 
+        return "success";
+    }
     // GET: Show Login Page
     @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
     public String login(Model model) {
@@ -71,12 +89,7 @@ public class AdminController {
     @RequestMapping(value = { "/accountInfo" }, method = RequestMethod.GET)
     public String accountInfo(Model model) {
  
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(userDetails.getPassword());
-        System.out.println(userDetails.getUsername());
-        System.out.println(userDetails.isEnabled());
- 
-        model.addAttribute("userDetails", userDetails);
+        model.addAttribute("userDetails", accountDAO.findAccount(SecurityUltil.getPrincipal()));
         return "accountInfo";
     }
  

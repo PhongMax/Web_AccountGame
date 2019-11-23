@@ -30,5 +30,11 @@ public class AccountDAOImpl implements AccountDAO {
 		}
     
     }
+
+	@Override
+	public void saveAccount(Account account) {
+		  Session session = sessionFactory.getCurrentSession();
+		  session.persist(account);
+	}
  
 }

@@ -34,18 +34,26 @@
                         </h3>
                         <h2 class="c-font-22">
                             <s:message code="accountInfo.account" />
-                            ${pageContext.request.userPrincipal.name}
+                            ${userDetails.userName}
 
                         </h2>
                         <h2 class="c-font-22">
                             <s:message code="accountInfo.role" />
                         </h2>
                         <h2 class="c-font-22">
-                            <c:forEach items="${userDetails.authorities}" var="auth">
+<%--                             <c:forEach items="${userDetails.authorities}" var="auth">
                                 <li>${auth.authority }</li>
-                            </c:forEach>
+                            </c:forEach> --%>
+                             ${userDetails.userRole }
                         </h2>
-
+						 <h2 class="c-font-22">
+						 		<s:message code="accountInfo.fullName" />
+                             ${userDetails.fullName}
+                        </h2>
+                         <h2 class="c-font-22">
+                         	<s:message code="accountInfo.phone" />
+                            ${userDetails.phone}
+                        </h2>
 
                     </div>
 

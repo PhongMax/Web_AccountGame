@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.UUID;
  
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -36,8 +35,7 @@ public class OrderDAOImpl implements OrderDAO {
     private int getMaxOrderNum() {
         String sql = "Select max(o.orderNum) from " + Order.class.getName() + " o ";
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery(sql);
-        Integer value = (Integer) query.uniqueResult();
+        Integer value = (Integer) session.createQuery(sql).uniqueResult();
         if (value == null) {
             return 0;
         }

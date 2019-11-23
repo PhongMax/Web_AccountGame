@@ -32,7 +32,6 @@ public class MyDBAuthenticationService implements UserDetailsService {
                     + username + " was not found in the database");
         }
  
-        // EMPLOYEE,MANAGER,..
         String role = account.getUserRole();
  
         List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
@@ -47,8 +46,8 @@ public class MyDBAuthenticationService implements UserDetailsService {
         boolean credentialsNonExpired = true;
         boolean accountNonLocked = true;
  
-        UserDetails userDetails = (UserDetails) new User(account.getUserName(), //
-                account.getPassword(), enabled, accountNonExpired, //
+        UserDetails userDetails = (UserDetails) new User(account.getUserName(),
+                account.getPassword(), enabled, accountNonExpired, 
                 credentialsNonExpired, accountNonLocked, grantList);
  
         return userDetails;

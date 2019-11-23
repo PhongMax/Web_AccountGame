@@ -10,7 +10,6 @@ import com.shopmoba.dao.ProductDAO;
 import com.shopmoba.model.Product;
 import com.shopmoba.service.ProductInfo;
  
-// @Component: As a Bean.
 @Component
 public class ProductInfoValidator implements Validator {
  
