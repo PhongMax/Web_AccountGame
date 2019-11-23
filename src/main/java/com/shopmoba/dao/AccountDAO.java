@@ -1,6 +1,6 @@
 package com.shopmoba.dao;
  
-import com.shopmoba.entity.Account;
+import com.shopmoba.model.Account;
  
 public interface AccountDAO {
  

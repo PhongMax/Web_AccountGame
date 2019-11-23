@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.shopmoba.dao.AccountDAO;
-import com.shopmoba.entity.Account;
+import com.shopmoba.model.Account;
  
 @Service
 public class MyDBAuthenticationService implements UserDetailsService {

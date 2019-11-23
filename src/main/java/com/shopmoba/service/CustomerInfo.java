@@ -1,4 +1,4 @@
-package com.shopmoba.model;
+package com.shopmoba.service;
  
 public class CustomerInfo {
  

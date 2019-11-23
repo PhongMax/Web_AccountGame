@@ -23,11 +23,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shopmoba.dao.OrderDAO;
 import com.shopmoba.dao.ProductDAO;
-import com.shopmoba.entity.Product;
-import com.shopmoba.model.CartInfo;
-import com.shopmoba.model.CustomerInfo;
-import com.shopmoba.model.PaginationResult;
-import com.shopmoba.model.ProductInfo;
+import com.shopmoba.model.Product;
+import com.shopmoba.service.CartInfo;
+import com.shopmoba.service.CustomerInfo;
+import com.shopmoba.service.PaginationResult;
+import com.shopmoba.service.ProductInfo;
 import com.shopmoba.util.Utils;
 import com.shopmoba.validator.CustomerInfoValidator;
  

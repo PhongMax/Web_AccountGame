@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.shopmoba.dao.ProductDAO;
-import com.shopmoba.entity.Product;
-import com.shopmoba.model.PaginationResult;
-import com.shopmoba.model.ProductInfo;
+import com.shopmoba.model.Product;
+import com.shopmoba.service.PaginationResult;
+import com.shopmoba.service.ProductInfo;
 
 
  

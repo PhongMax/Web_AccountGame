@@ -14,17 +14,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shopmoba.dao.OrderDAO;
 import com.shopmoba.dao.ProductDAO;
-import com.shopmoba.entity.Order;
-import com.shopmoba.entity.OrderDetail;
-import com.shopmoba.entity.Product;
-import com.shopmoba.model.CartInfo;
-import com.shopmoba.model.CartLineInfo;
-import com.shopmoba.model.CustomerInfo;
-import com.shopmoba.model.OrderDetailInfo;
-import com.shopmoba.model.OrderInfo;
-import com.shopmoba.model.PaginationResult;
+import com.shopmoba.model.Order;
+import com.shopmoba.model.OrderDetail;
+import com.shopmoba.model.Product;
+import com.shopmoba.service.CartInfo;
+import com.shopmoba.service.CartLineInfo;
+import com.shopmoba.service.CustomerInfo;
+import com.shopmoba.service.OrderDetailInfo;
+import com.shopmoba.service.OrderInfo;
+import com.shopmoba.service.PaginationResult;
  
-//Transactional for Hibernate
 @Transactional
 public class OrderDAOImpl implements OrderDAO {
  

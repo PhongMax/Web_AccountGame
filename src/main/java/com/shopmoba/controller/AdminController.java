@@ -23,10 +23,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shopmoba.dao.OrderDAO;
 import com.shopmoba.dao.ProductDAO;
-import com.shopmoba.model.OrderDetailInfo;
-import com.shopmoba.model.OrderInfo;
-import com.shopmoba.model.PaginationResult;
-import com.shopmoba.model.ProductInfo;
+import com.shopmoba.service.OrderDetailInfo;
+import com.shopmoba.service.OrderInfo;
+import com.shopmoba.service.PaginationResult;
+import com.shopmoba.service.ProductInfo;
 import com.shopmoba.validator.ProductInfoValidator;
  
 @Controller

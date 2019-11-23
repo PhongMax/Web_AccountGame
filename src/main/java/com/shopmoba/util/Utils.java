@@ -2,7 +2,7 @@ package com.shopmoba.util;
  
 import javax.servlet.http.HttpServletRequest;
 
-import com.shopmoba.model.CartInfo;
+import com.shopmoba.service.CartInfo;
  
 public class Utils {
  
