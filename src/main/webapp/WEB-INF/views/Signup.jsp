@@ -16,51 +16,59 @@
 	<jsp:include page="_header.jsp" />
 
 	<!-- BEGIN: PAGE CONTAINER -->
-    <div class="c-layout-page background-singup">	
+	<div class="c-layout-page background-singup">
 		<div class="col-md-12" style="min-height: 600px;">
 
 			<!-- BEGIN: LOGIN CONTENT -->
 			<div class="login-box">
-				
+
 				<!-- /.login-logo -->
 				<div class="login-box-body box-custom">
 					<p class="login-box-msg">Đăng ký tài khoản</p>
 
 					<span class="help-block" style="text-align: center; color: #dd4b39">
-						<strong></strong>
 					</span>
 
-					<form action="${pageContext.request.contextPath}/signup" method="POST">
-						<input type="hidden" name="_token"
-							value="Jsw6miEDJ873hPv76KWrrXxci3qrC1NKKmLbinie">
+					<form:form action="${pageContext.request.contextPath}/signup"
+						method="POST" modelAttribute="account">
+
 						<div class="form-group has-feedback  ">
-							<input type="text" class="form-control" name="username" value=""
-								placeholder="Tài khoản"> <span
-								class="glyphicon glyphicon-user form-control-feedback"></span>
+							<form:input type="text" class="form-control" path="userName"
+								value="" placeholder="Tài khoản" />
+							<span class="glyphicon glyphicon-user form-control-feedback"></span>
 
 						</div>
 
 
 						<div class="form-group has-feedback">
-							<input type="text" class="form-control number" maxlength="11"
-								name="phone" value="" placeholder="Số điện thoại"> <span
-								class="glyphicon glyphicon-phone form-control-feedback"></span>
+							<form:input path="phone" type="text" class="form-control number"
+								maxlength="11" value="" placeholder="Số điện thoại" />
+							<span class="glyphicon glyphicon-phone form-control-feedback"></span>
+						</div>
+
+						<div class="form-group has-feedback">
+							<form:input path="fullName" type="text" class="form-control "
+								value="" placeholder="Họ và tên" />
+							<span class="glyphicon glyphicon-text-size form-control-feedback"></span>
+						</div>
+
+						<div class="form-group has-feedback">
+
+							<form:select class="form-control" path="userRole">
+								<form:option value="EMPLOYEE" />
+								<form:option value="MANAGER" />
+							</form:select>
 						</div>
 
 
 						<div class="form-group has-feedback">
-							<input type="password" class="form-control" name="password"
-								placeholder="Mật khẩu"> <span
-								class="glyphicon glyphicon-lock form-control-feedback"></span>
-
-						</div>
-						<div class="form-group has-feedback">
-							<input type="password" class="form-control"
-								name="password_confirmation" placeholder="Xác nhận mật khẩu">
+							<form:password class="form-control" placeholder="Mật khẩu" id="myPass"
+								 value="123" path="password" />
 							<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+							<input type="checkbox" onclick="fnShowPassword()">Hiển thi mật khẩu
 						</div>
 
-
+						
 						<div class="row">
 
 							<!-- /.col -->
@@ -70,7 +78,7 @@
 							</div>
 							<!-- /.col -->
 						</div>
-					</form>
+					</form:form>
 				</div>
 				<!-- /.login-box-body -->
 			</div>
@@ -80,6 +88,18 @@
 		</div>
 
 	</div>
+
+	<script>
+		function fnShowPassword() {
+			var x = document.getElementById("myPass");
+			if (x.type === "password") {
+				x.type = "text";
+			} else {
+				x.type = "password";
+			}
+		}
+	</script>
+
 	<!-- END: PAGE CONTENT -->
 	<%--    <jsp:include page="_footer.jsp" /> --%>
 	<%@include file="/WEB-INF/views/_footer.jsp"%>

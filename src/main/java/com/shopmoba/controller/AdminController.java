@@ -25,6 +25,7 @@ import com.shopmoba.dao.AccountDAO;
 import com.shopmoba.dao.OrderDAO;
 import com.shopmoba.dao.ProductDAO;
 import com.shopmoba.model.Account;
+import com.shopmoba.service.CartInfo;
 import com.shopmoba.service.OrderDetailInfo;
 import com.shopmoba.service.OrderInfo;
 import com.shopmoba.service.PaginationResult;
@@ -69,14 +70,15 @@ public class AdminController {
     // GET: Show Sign up Page
     @RequestMapping(value = { "/signup" }, method = RequestMethod.GET)
     public String signup(Model model) {
- 
+    	Account  account = new Account();
+    	model.addAttribute("account", account);
         return "Signup";
     }
     
     // POST: Show Sign up Page, save account
     @RequestMapping(value = { "/signup" }, method = RequestMethod.POST)
-    public String signupSave(Model model) {
- 
+    public String signupSave(Model model,  @ModelAttribute("account") Account account) {
+    	accountDAO.saveAccount(account);
         return "success";
     }
     // GET: Show Login Page

@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
        http.authorizeRequests().antMatchers("/orderList","/order", "/accountInfo")//
                .access("hasAnyRole('ROLE_EMPLOYEE', 'ROLE_MANAGER')");
  
-       http.authorizeRequests().antMatchers("/product").access("hasRole('ROLE_MANAGER')");
+       http.authorizeRequests().antMatchers("/product","/signup").access("hasRole('ROLE_MANAGER')");
  
        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
  
@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
        http.authorizeRequests().and().formLogin()
                // Submit URL of login page.
                .loginProcessingUrl("/j_spring_security_check") // Submit URL
-               .loginPage("/login")
+               .loginPage("/login")   //default url when dont have permission to access page.
                .defaultSuccessUrl("/accountInfo")
                .failureUrl("/login?error=true")
                .usernameParameter("userName")
