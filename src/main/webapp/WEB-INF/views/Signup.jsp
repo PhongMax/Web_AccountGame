@@ -28,7 +28,11 @@
 
 					<span class="help-block" style="text-align: center; color: #dd4b39">
 					</span>
-
+					<c:if test="${not empty errorMessage }">
+					<div class="error-message">${errorMessage}</div>
+					</c:if>
+					
+					
 					<form:form action="${pageContext.request.contextPath}/signup"
 						method="POST" modelAttribute="account">
 
@@ -36,7 +40,7 @@
 							<form:input type="text" class="form-control" path="userName"
 								value="" placeholder="Tài khoản" />
 							<span class="glyphicon glyphicon-user form-control-feedback"></span>
-
+							<form:errors path="userName" class="error-message" />
 						</div>
 
 
@@ -44,12 +48,14 @@
 							<form:input path="phone" type="text" class="form-control number"
 								maxlength="11" value="" placeholder="Số điện thoại" />
 							<span class="glyphicon glyphicon-phone form-control-feedback"></span>
+							<form:errors path="phone" class="error-message" />
 						</div>
 
 						<div class="form-group has-feedback">
 							<form:input path="fullName" type="text" class="form-control "
 								value="" placeholder="Họ và tên" />
 							<span class="glyphicon glyphicon-text-size form-control-feedback"></span>
+							<form:errors path="fullName" class="error-message" />
 						</div>
 
 						<div class="form-group has-feedback">
@@ -65,6 +71,7 @@
 							<form:password class="form-control" placeholder="Mật khẩu" id="myPass"
 								 value="123" path="password" />
 							<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+							<form:errors path="password" class="error-message" />
 							<input type="checkbox" onclick="fnShowPassword()">Hiển thi mật khẩu
 						</div>
 

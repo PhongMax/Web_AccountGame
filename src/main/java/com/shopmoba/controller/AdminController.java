@@ -2,9 +2,8 @@ package com.shopmoba.controller;
  
 import java.util.List;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,17 +24,16 @@ import com.shopmoba.dao.AccountDAO;
 import com.shopmoba.dao.OrderDAO;
 import com.shopmoba.dao.ProductDAO;
 import com.shopmoba.model.Account;
-import com.shopmoba.service.CartInfo;
 import com.shopmoba.service.OrderDetailInfo;
 import com.shopmoba.service.OrderInfo;
 import com.shopmoba.service.PaginationResult;
 import com.shopmoba.service.ProductInfo;
 import com.shopmoba.util.SecurityUltil;
+import com.shopmoba.validator.AccountInfoValidator;
 import com.shopmoba.validator.ProductInfoValidator;
  
 @Controller
 @Transactional
-// Need to use RedirectAttributes
 @EnableWebMvc
 public class AdminController {
  
@@ -47,11 +45,14 @@ public class AdminController {
  
     @Autowired
     private ProductInfoValidator productInfoValidator;
+    
+    @Autowired
+    private AccountInfoValidator accountInfoValidator;
  
     @Autowired
     private AccountDAO accountDAO;
     
- 
+    
     @InitBinder
     public void myInitBinder(WebDataBinder dataBinder) {
         Object target = dataBinder.getTarget();
@@ -62,12 +63,16 @@ public class AdminController {
  
         if (target.getClass() == ProductInfo.class) {
             dataBinder.setValidator(productInfoValidator);
-            // For upload Image.
             dataBinder.registerCustomEditor(byte[].class, new ByteArrayMultipartFileEditor());
+        }
+        
+        if (target.getClass() == Account.class) {
+            dataBinder.setValidator(accountInfoValidator);
+           
         }
     }
  
-    // GET: Show Sign up Page
+    
     @RequestMapping(value = { "/signup" }, method = RequestMethod.GET)
     public String signup(Model model) {
     	Account  account = new Account();
@@ -75,12 +80,38 @@ public class AdminController {
         return "Signup";
     }
     
+    
     // POST: Show Sign up Page, save account
-    @RequestMapping(value = { "/signup" }, method = RequestMethod.POST)
-    public String signupSave(Model model,  @ModelAttribute("account") Account account) {
-    	accountDAO.saveAccount(account);
-        return "success";
-    }
+    // Save or update Applicant
+    // 1. @ModelAttribute bind form value
+    // 2. @Validated form validator
+    // 3. RedirectAttributes for flash value
+    
+	@RequestMapping(value = { "/signup" }, method = RequestMethod.POST)
+	public String signupSave(Model model, @ModelAttribute("account") @Validated Account account, BindingResult result,
+			final RedirectAttributes redirectAttributes) {
+		
+		 if (result.hasErrors()) {
+	            return "Signup";
+	        }
+		 
+		 try {
+			 account.setActive(true);
+			 accountDAO.saveAccount(account);	
+			} catch (Exception e) {
+				 // Need: Propagation.NEVER?
+	            String message = e.getMessage();
+	            model.addAttribute("errorMessage", message);
+	           
+	            return "redirect:/Signup";
+			}
+		 	
+		 
+		 	model.addAttribute("account", account);
+	        return "success";
+	}
+	
+	
     // GET: Show Login Page
     @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
     public String login(Model model) {
@@ -96,7 +127,7 @@ public class AdminController {
     }
  
     @RequestMapping(value = { "/orderList" }, method = RequestMethod.GET)
-    public String orderList(Model model, //
+    public String orderList(Model model,
             @RequestParam(value = "page", defaultValue = "1") String pageStr) {
         int page = 1;
         try {
@@ -106,8 +137,7 @@ public class AdminController {
         final int MAX_RESULT = 5;
         final int MAX_NAVIGATION_PAGE = 10;
  
-        PaginationResult<OrderInfo> paginationResult //
-        = orderDAO.listOrderInfo(page, MAX_RESULT, MAX_NAVIGATION_PAGE);
+        PaginationResult<OrderInfo> paginationResult = orderDAO.listOrderInfo(page, MAX_RESULT, MAX_NAVIGATION_PAGE);
  
         model.addAttribute("paginationResult", paginationResult);
         return "orderList";
@@ -133,9 +163,9 @@ public class AdminController {
     @RequestMapping(value = { "/product" }, method = RequestMethod.POST)
     // Avoid UnexpectedRollbackException (See more explanations)
     @Transactional(propagation = Propagation.NEVER)
-    public String productSave(Model model, //
-            @ModelAttribute("productForm") @Validated ProductInfo productInfo, //
-            BindingResult result, //
+    public String productSave(Model model, 
+            @ModelAttribute("productForm") @Validated ProductInfo productInfo,
+            BindingResult result, 
             final RedirectAttributes redirectAttributes) {
  
         if (result.hasErrors()) {
@@ -146,7 +176,7 @@ public class AdminController {
         } catch (Exception e) {
             // Need: Propagation.NEVER?
             String message = e.getMessage();
-            model.addAttribute("message", message);
+            model.addAttribute("errorMessage", message);
             // Show product form.
             return "product";
  

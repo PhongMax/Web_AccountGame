@@ -33,16 +33,18 @@
 					enctype="multipart/form-data">
 					<table style="text-align: left;">
 						<tr>
-							<td>Code *</td>
-							<td style="color: red;"><c:if
-									test="${not empty productForm.code}">
-									<form:hidden path="code" />
-                       ${productForm.code}
-                  </c:if> <c:if test="${empty productForm.code}">
-									<form:input path="code" />
-									<form:hidden path="newProduct" />
-								</c:if></td>
-							<td><form:errors path="code" class="error-message" /></td>
+								<td>Code *</td>
+								<td style="color: red;">
+									<c:if test="${not empty productForm.code}">
+										<form:hidden path="code" />
+                       					${productForm.code}
+                  					</c:if>
+                  					 <c:if test="${empty productForm.code}">
+										<form:input path="code" />
+										<form:hidden path="newProduct" />
+									</c:if>
+								</td>
+								<td><form:errors path="code" class="error-message" /></td>
 						</tr>
 
 						<tr>
