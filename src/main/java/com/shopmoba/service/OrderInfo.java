@@ -22,10 +22,10 @@ public class OrderInfo {
  
     }
  
-    // Using for Hibernate Query.
+ 
     // Sử dụng cho Hibernate Query.
-    public OrderInfo(String id, Date orderDate, int orderNum, //
-            double amount, String customerName, String customerAddress, //
+    public OrderInfo(String id, Date orderDate, int orderNum, 
+            double amount, String customerName, String customerAddress, 
             String customerEmail, String customerPhone) {
         this.id = id;
         this.orderDate = orderDate;

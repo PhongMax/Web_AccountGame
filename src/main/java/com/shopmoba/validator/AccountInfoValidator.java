@@ -7,9 +7,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.shopmoba.dao.AccountDAO;
-import com.shopmoba.dao.ProductDAO;
 import com.shopmoba.model.Account;
-import com.shopmoba.service.ProductInfo;
 
 @Component
 public class AccountInfoValidator implements Validator{   

@@ -4,11 +4,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
  
-import org.hibernate.Criteria;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,9 +32,9 @@ public class OrderDAOImpl implements OrderDAO {
     private ProductDAO productDAO;
  
     private int getMaxOrderNum() {
-        String sql = "Select max(o.orderNum) from " + Order.class.getName() + " o ";
+        String hql = "Select max(o.orderNum) from " + Order.class.getName() + " o ";
         Session session = sessionFactory.getCurrentSession();
-        Integer value = (Integer) session.createQuery(sql).uniqueResult();
+        Integer value = (Integer) session.createQuery(hql).uniqueResult();
         if (value == null) {
             return 0;
         }
@@ -88,20 +86,18 @@ public class OrderDAOImpl implements OrderDAO {
     // @page = 1, 2, ...
     @Override
     public PaginationResult<OrderInfo> listOrderInfo(int page, int maxResult, int maxNavigationPage) {
-        String sql = "Select new " + OrderInfo.class.getName()
+        String hql = "Select new " + OrderInfo.class.getName()
                 + "(ord.id, ord.orderDate, ord.orderNum, ord.amount, "
                 + " ord.customerName, ord.customerAddress, ord.customerEmail, ord.customerPhone) " + " from "
                 + Order.class.getName() + " ord "
                 + " order by ord.orderNum desc";
         Session session = this.sessionFactory.getCurrentSession();
-        return new PaginationResult<OrderInfo>(session.createQuery(sql), page, maxResult, maxNavigationPage);
+        return new PaginationResult<OrderInfo>(session.createQuery(hql), page, maxResult, maxNavigationPage);
     }
  
     public Order findOrder(String orderId) {
         Session session = sessionFactory.getCurrentSession();
-        Criteria crit = session.createCriteria(Order.class);
-        crit.add(Restrictions.eq("id", orderId));
-        return (Order) crit.uniqueResult();
+        return (Order) session.get(Order.class, orderId);
     }
  
     @Override
@@ -110,21 +106,22 @@ public class OrderDAOImpl implements OrderDAO {
         if (order == null) {
             return null;
         }
-        return new OrderInfo(order.getId(), order.getOrderDate(), //
-                order.getOrderNum(), order.getAmount(), order.getCustomerName(), //
+        return new OrderInfo(order.getId(), order.getOrderDate(), 
+                order.getOrderNum(), order.getAmount(), order.getCustomerName(), 
                 order.getCustomerAddress(), order.getCustomerEmail(), order.getCustomerPhone());
     }
  
     @Override
     public List<OrderDetailInfo> listOrderDetailInfos(String orderId) {
-        String sql = "Select new " + OrderDetailInfo.class.getName() //
-                + "(d.id, d.product.code, d.product.name , d.quanity,d.price,d.amount) "//
-                + " from " + OrderDetail.class.getName() + " d "//
+        String hql = "Select new " + OrderDetailInfo.class.getName() 
+                + "(d.id, d.product.code, d.product.name , d.quanity,d.price,d.amount) "
+                + " from " + OrderDetail.class.getName() + " d "
                 + " where d.order.id = :orderId ";
  
         Session session = this.sessionFactory.getCurrentSession();
  
-        Query query = session.createQuery(sql);
+        @SuppressWarnings("unchecked")
+		Query<OrderDetailInfo> query = session.createQuery(hql);
         query.setParameter("orderId", orderId);
  
         return query.list();

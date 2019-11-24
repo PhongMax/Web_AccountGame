@@ -4,11 +4,11 @@ package com.shopmoba.service;
 import java.util.ArrayList;
 import java.util.List;
  
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.ScrollMode;
 import org.hibernate.ScrollableResults;
  
-@SuppressWarnings("deprecation")
+
 public class PaginationResult<E> {
  
    private int totalRecords;
@@ -22,7 +22,8 @@ public class PaginationResult<E> {
    private List<Integer> navigationPages;
  
    // @page: 1, 2, ..
-   public PaginationResult(Query query, int page, int maxResult, int maxNavigationPage) {
+   @SuppressWarnings("unchecked")
+public PaginationResult(@SuppressWarnings("rawtypes") Query query, int page, int maxResult, int maxNavigationPage) {
        final int pageIndex = page - 1 < 0 ? 0 : page - 1;
  
        int fromRecordIndex = pageIndex * maxResult;
@@ -30,7 +31,8 @@ public class PaginationResult<E> {
  
        ScrollableResults resultScroll = query.scroll(ScrollMode.SCROLL_INSENSITIVE);
  
-       List results = new ArrayList();
+  
+       List<E> results = new ArrayList<E>();
  
        boolean hasResult = resultScroll.first();
  

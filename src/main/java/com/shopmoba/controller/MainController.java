@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.shopmoba.dao.AccountDAO;
 import com.shopmoba.dao.OrderDAO;
 import com.shopmoba.dao.ProductDAO;
 import com.shopmoba.model.Product;

@@ -28,7 +28,7 @@ public class MyDBAuthenticationService implements UserDetailsService {
         System.out.println("Account= " + account);
         
         if (account == null) {
-            throw new UsernameNotFoundException("User " //
+            throw new UsernameNotFoundException("User " 
                     + username + " was not found in the database");
         }
  
