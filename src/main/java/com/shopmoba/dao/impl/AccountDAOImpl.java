@@ -27,14 +27,29 @@ public class AccountDAOImpl implements AccountDAO {
 		} catch (HibernateException hibernateEx) {
 			hibernateEx.printStackTrace();
 			return null;
-		}
+		}catch(Exception ex)
+    	{
+			ex.printStackTrace();
+			return null;
+    	}
     
     }
 
 	@Override
 	public void saveAccount(Account account) {
-		  Session session = sessionFactory.getCurrentSession();
-		  session.persist(account);
+		
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			session.persist(account);
+
+		} catch (HibernateException hibernateEx) {
+			hibernateEx.printStackTrace();
+			return ;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return ;
+		}
+		  
 	}
  
 }

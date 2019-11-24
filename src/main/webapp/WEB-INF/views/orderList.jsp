@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -23,19 +24,20 @@
 
 		<div class="container c-size-md ">
 			<div class="col-md-12" style="min-height: 550px;">
-				<div class="page-title">Order List</div>
+				<div class="page-title"><s:message code="orderList.title" /></div>
  
-   <div>Total Order Count: ${paginationResult.totalRecords}</div>
+   <div><s:message code="orderList.TotalOrderCount" /> : ${paginationResult.totalRecords}</div>
   
    <table border="1" style="width:100%">
        <tr>
-           <th>Order Num</th>
-           <th>Order Date</th>
-           <th>Customer Name</th>
-           <th>Customer Address</th>
-           <th>Customer Email</th>
-           <th>Amount</th>
-           <th>View</th>
+           <th><s:message code="orderList.orderNum" /></th>
+           <th><s:message code="orderList.orderDate" /></th>
+           <th><s:message code="orderList.customerName" /></th>
+           <th><s:message code="orderList.customerAddress" /></th>
+           <th><s:message code="orderList.customerEmail" /></th>
+           <th><s:message code="orderList.phone" /></th>
+           <th><s:message code="orderList.total" /></th>
+           <th><s:message code="orderList.view" /></th>
        </tr>
        <c:forEach items="${paginationResult.list}" var="orderInfo">
            <tr>
@@ -46,6 +48,7 @@
                <td>${orderInfo.customerName}</td>
                <td>${orderInfo.customerAddress}</td>
                <td>${orderInfo.customerEmail}</td>
+               <td>${orderInfo.customerPhone }</td>
                <td style="color:red;">
                   <fmt:formatNumber value="${orderInfo.amount}" type="currency"/>
                </td>
