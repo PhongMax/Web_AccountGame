@@ -161,7 +161,7 @@ public class AdminController {
     // POST: Save product
     @RequestMapping(value = { "/product" }, method = RequestMethod.POST)
     // Avoid UnexpectedRollbackException (See more explanations)
-    @Transactional(propagation = Propagation.NEVER)
+    @Transactional()
     public String productSave(Model model, 
             @ModelAttribute("productForm") @Validated ProductInfo productInfo,
             BindingResult result, 
@@ -173,11 +173,12 @@ public class AdminController {
         try {
             productDAO.save(productInfo);
         } catch (Exception e) {
-            // Need: Propagation.NEVER?
+          /*  // Need: Propagation.NEVER?
             String message = e.getMessage();
+            System.out.println(message);
             model.addAttribute("errorMessage", message);
             // Show product form.
-            return "product";
+*/            return "product";
  
         }
         return "redirect:/productList";

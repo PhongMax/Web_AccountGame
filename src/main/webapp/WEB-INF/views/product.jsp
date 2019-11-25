@@ -40,37 +40,60 @@
 										<form:input path="code" />
 										<form:hidden path="newProduct" />
 									</c:if>
-									<form:errors path="code" class="error-message" />
+									
 								</td>
 							
+						</tr>
+						<tr>
+							<form:errors path="code" class="error-message" />
 						</tr>
 
 						<tr>
 							<td>Name </td>
-							<td><form:input path="name" /></td>		
-							<td><form:errors path="name" class="error-message" /></td>
+							<td><form:input path="name" /> 
+							</td>		
+							
 						</tr>
+						<tr>
+						<form:errors path="name" class="error-message" />
+						</tr>
+						
 
 						<tr>
 							<td>Price </td>
 							<td ><form:input path="price" /></td>
-							<td><form:errors path="price" class="error-message" /></td>
+							
 						</tr>
+						
+						<tr>
+							<form:errors path="price" class="error-message" />
+						</tr>
+						
 						
 						<tr>
 							<td>Hero Number </td>
 							<td><form:input path="nHeros" /></td>
-							<td><form:errors path="nHeros" class="error-message" /></td>
 						</tr>
+						<tr>							
+						<form:errors path="nHeros" class="error-message" />
+						</tr>
+						
 						<tr>
 							<td>Skin Number </td>
 							<td><form:input path="nSkins" /></td>
-							<td><form:errors path="nSkins" class="error-message" /></td>
 						</tr>
+						<tr>
+						<form:errors path="nSkins" class="error-message" />
+						</tr>
+						
 						<tr>
 							<td>Round Number </td>
 							<td><form:input path="nRounds" /></td>
-							<td><form:errors path="nRounds" class="error-message" /></td>
+							
+						</tr>
+						
+						<tr>
+						<form:errors path="nRounds" class="error-message" />
 						</tr>
 						<tr>
 							<td>Gemstone </td>
