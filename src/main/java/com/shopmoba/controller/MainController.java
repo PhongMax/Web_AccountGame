@@ -33,7 +33,6 @@ import com.shopmoba.validator.CustomerInfoValidator;
  
 @Controller
 @Transactional
-// Need to use RedirectAttributes
 @EnableWebMvc
 public class MainController {
  
@@ -81,8 +80,6 @@ public class MainController {
         return "index";
     }
  
-
-    // Danh sách sản phẩm.
     @RequestMapping({ "/productList" })
     public String listProductHandler(Model model,
             @RequestParam(value = "name", defaultValue = "") String likeName,

@@ -58,8 +58,33 @@
 							<td><form:input path="price" /></td>
 							<td><form:errors path="price" class="error-message" /></td>
 						</tr>
+						
 						<tr>
-							<td>Image</td>
+							<td>Hero Number *</td>
+							<td><form:input path="nHeros" /></td>
+							<td><form:errors path="nHeros" class="error-message" /></td>
+						</tr>
+						<tr>
+							<td>Skin Number *</td>
+							<td><form:input path="nSkins" /></td>
+							<td><form:errors path="nSkins" class="error-message" /></td>
+						</tr>
+						<tr>
+							<td>Round Number *</td>
+							<td><form:input path="nRounds" /></td>
+							<td><form:errors path="nRounds" class="error-message" /></td>
+						</tr>
+						<tr>
+							<td>Gemstone *</td>
+							<td><form:select class="form-control" path="isGemstone">
+								<form:option value="true" label="Có" />
+								<form:option value="false" label="Không" />
+							</form:select>
+							</td>
+							<td><form:errors path="isGemstone" class="error-message" /></td>
+						</tr>
+						<tr>
+							<td>Image *</td>
 							<td><img
 								src="${pageContext.request.contextPath}/productImage?code=${productForm.code}"
 								width="100" /></td>

@@ -18,8 +18,7 @@
 
     <jsp:include page="_header.jsp" />
 
-    <!-- set sang vietnam
-    <fmt:setLocale value="en_US" scope="session" /> -->
+
 
 
     <!-- BEGIN: PAGE CONTAINER -->
@@ -40,6 +39,17 @@
                     <li>Price:
                         <fmt:formatNumber value="${prodInfo.price}" type="currency" />
                     </li>
+                    
+                     <li>Hero : ${prodInfo.nHeros}
+                    </li>
+                     <li>Skin : ${prodInfo.nSkins}
+                    </li>
+                     <li>Round : ${prodInfo.nRounds}
+                    </li>
+                     <li>Gemstone : ${prodInfo.isGemstone}
+                    </li>
+                    
+                    
                     <li><a href="${pageContext.request.contextPath}/buyProduct?code=${prodInfo.code}">
                             Buy Now</a></li>
 

@@ -27,6 +27,10 @@ public class Product implements Serializable {
     private String name;
     private double price;
     
+    private int nHeros;
+    private int nSkins;
+    private int nRounds;
+    private boolean isGemstone;
     @Lob
     private byte[] image;
     
@@ -88,6 +92,38 @@ public class Product implements Serializable {
 
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
+	}
+
+	public boolean isGemstone() {
+		return isGemstone;
+	}
+
+	public void setGemstone(boolean isGemstone) {
+		this.isGemstone = isGemstone;
+	}
+
+	public int getnRounds() {
+		return nRounds;
+	}
+
+	public void setnRounds(int nRounds) {
+		this.nRounds = nRounds;
+	}
+
+	public int getnSkins() {
+		return nSkins;
+	}
+
+	public void setnSkins(int nSkins) {
+		this.nSkins = nSkins;
+	}
+
+	public int getnHeros() {
+		return nHeros;
+	}
+
+	public void setnHeros(int nHeros) {
+		this.nHeros = nHeros;
 	}
 	
 }

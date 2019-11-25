@@ -15,8 +15,8 @@ public class ProductInfoValidator implements Validator {
  
     @Autowired
     private ProductDAO productDAO;
- 
-    // This Validator support ProductInfo class.
+
+    
     @Override
     public boolean supports(Class<?> clazz) {
         return clazz == ProductInfo.class;
@@ -30,7 +30,12 @@ public class ProductInfoValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "code", "NotEmpty.productForm.code");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "NotEmpty.productForm.name");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "price", "NotEmpty.productForm.price");
- 
+        
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nHeros", "NotEmpty.productForm.hero");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nRounds", "NotEmpty.productForm.round");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nSkins", "NotEmpty.productForm.skin");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "isGemstone", "NotEmpty.productForm.gemstone");
+        
         String code = productInfo.getCode();
         if (code != null && code.length() > 0) {
             if (code.matches("\\s+")) {
