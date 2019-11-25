@@ -19,21 +19,22 @@
 	<!-- BEGIN: PAGE CONTAINER -->
 	<div class="c-layout-page background-product">
 		<!-- BEGIN: PAGE CONTENT -->
-
+	<br><br>	
 		<div class="container">
 			<div class="col-md-12" style="min-height: 550px;">
-				<div class="page-title">Product</div>
+				
 				<div  class="center-form-createproduct">
 				
 					<c:if test="${not empty errorMessage }">
 					<div class="error-message">${errorMessage}</div>
 				</c:if>
-
+			
 				<form:form modelAttribute="productForm" method="POST"
 					enctype="multipart/form-data">
+					
 					<table style="text-align: left;">
 						<tr>
-								<td>Code *</td>
+								<td>Code </td>
 								<td style="color: red;">
 									<c:if test="${not empty productForm.code}">
 										<form:hidden path="code" />
@@ -48,43 +49,43 @@
 						</tr>
 
 						<tr>
-							<td>Name *</td>
+							<td>Name </td>
 							<td><form:input path="name" /></td>		
-							<td><form:errors path="name" class="error-message" /></td>
+							<form:errors path="name" class="error-message" />
 						</tr>
 
 						<tr>
-							<td>Price *</td>
-							<td><form:input path="price" /></td>
+							<td>Price </td>
+							<td style =" color: green;"><form:input path="price" /></td>
 							<td><form:errors path="price" class="error-message" /></td>
 						</tr>
 						
 						<tr>
-							<td>Hero Number *</td>
+							<td>Hero Number </td>
 							<td><form:input path="nHeros" /></td>
 							<td><form:errors path="nHeros" class="error-message" /></td>
 						</tr>
 						<tr>
-							<td>Skin Number *</td>
+							<td>Skin Number </td>
 							<td><form:input path="nSkins" /></td>
 							<td><form:errors path="nSkins" class="error-message" /></td>
 						</tr>
 						<tr>
-							<td>Round Number *</td>
+							<td>Round Number </td>
 							<td><form:input path="nRounds" /></td>
 							<td><form:errors path="nRounds" class="error-message" /></td>
 						</tr>
 						<tr>
-							<td>Gemstone *</td>
-							<td><form:select class="form-control" path="isGemstone">
-								<form:option value="true" label="Có" />
-								<form:option value="false" label="Không" />
-							</form:select>
+							<td>Gemstone </td>
+							<td><select id="isGemstone" name="isGemstone" class="form-control" style=" width: 90px;">
+								<option value="true">Có</option>
+								<option value="false" selected="selected">Không</option>
+							</select>
 							</td>
 							<td><form:errors path="isGemstone" class="error-message" /></td>
 						</tr>
 						<tr>
-							<td>Image *</td>
+							<td>Image </td>
 							<td><img
 								src="${pageContext.request.contextPath}/productImage?code=${productForm.code}"
 								width="100" /></td>
@@ -114,13 +115,7 @@
 		<!-- END: PAGE CONTENT -->
 	</div>
 
-
-
-
-
 	<%--    <jsp:include page="_footer.jsp" /> --%>
 	<%@include file="/WEB-INF/views/_footer.jsp"%>
-
-
 </body>
 </html>
