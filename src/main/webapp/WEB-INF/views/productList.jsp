@@ -37,7 +37,7 @@
                     <li>Code: ${prodInfo.code}</li>
                     <li>Name: ${prodInfo.name}</li>
                     <li>Price:
-                        <fmt:formatNumber value="${prodInfo.price}" type="currency" />
+                       <b style =" color: green;">${prodInfo.price} đ</b>
                     </li>
                     
                      <li>Hero : ${prodInfo.nHeros}
@@ -46,11 +46,18 @@
                     </li>
                      <li>Round : ${prodInfo.nRounds}
                     </li>
-                     <li>Gemstone : ${prodInfo.isGemstone}
-                    </li>
-                    
-                    
-                    <li><a href="${pageContext.request.contextPath}/buyProduct?code=${prodInfo.code}">
+					<li>Gemstone :
+							 <c:if
+									test="${prodInfo.isGemstone eq true}">
+									Yes
+							</c:if>
+							<c:if test="${prodInfo.isGemstone eq false}">
+									No
+							</c:if>
+					</li>
+
+
+							<li><a href="${pageContext.request.contextPath}/buyProduct?code=${prodInfo.code}">
                             Buy Now</a></li>
 
 

@@ -24,7 +24,7 @@
 
 		<div class="container c-size-md ">
 			<div class="col-md-12" style="min-height: 550px;">
-				<div class="page-title"><s:message code="orderList.title" /></div>
+				<div class="page-title" style="color: blue;"><s:message code="orderList.title" /></div>
  
    <div><s:message code="orderList.TotalOrderCount" /> : ${paginationResult.totalRecords}</div>
   

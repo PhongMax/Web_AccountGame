@@ -54,15 +54,10 @@ public class MainController {
         }
         System.out.println("Target=" + target);
  
-        // For Cart Form.
-        // (@ModelAttribute("cartForm") @Validated CartInfo cartForm)
-        if (target.getClass() == CartInfo.class) {
- 
-        }
         // For Customer Form.
         // (@ModelAttribute("customerForm") @Validated CustomerInfo
         // customerForm)
-        else if (target.getClass() == CustomerInfo.class) {
+       if (target.getClass() == CustomerInfo.class) {
             dataBinder.setValidator(customerInfoValidator);
         }
  
@@ -80,6 +75,7 @@ public class MainController {
         return "index";
     }
  
+
     @RequestMapping({ "/productList" })
     public String listProductHandler(Model model,
             @RequestParam(value = "name", defaultValue = "") String likeName,
@@ -187,8 +183,8 @@ public class MainController {
             @ModelAttribute("customerForm") @Validated CustomerInfo customerForm, 
             BindingResult result, 
             final RedirectAttributes redirectAttributes) {
-  
-        // If has Errors.
+          // If has Errors.
+
         if (result.hasErrors()) {
             customerForm.setValid(false);
             // Forward to reenter customer info.

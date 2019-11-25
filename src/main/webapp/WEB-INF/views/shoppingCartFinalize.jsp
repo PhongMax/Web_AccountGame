@@ -22,10 +22,6 @@
 
 		<div class="container c-size-md ">
 			<div class="col-md-12" style="min-height: 550px;">
-
-
-				<div class="page-title">Finalize</div>
-
 				<div >
 					<h3>Thank you for Order</h3>
 					Your order number is: ${lastOrderedCart.orderNum}

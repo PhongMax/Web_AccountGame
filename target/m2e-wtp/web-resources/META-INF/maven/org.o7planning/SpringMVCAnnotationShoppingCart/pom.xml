@@ -104,7 +104,25 @@
             <artifactId>spring-security-web</artifactId>
             <version>4.0.4.RELEASE</version>
         </dependency>
- 
+ 		
+ 		
+ 		<!-- Support Mail -->
+
+	<dependency>
+		<groupId>javax.mail</groupId>
+		<artifactId>mail</artifactId>
+		<version>1.4.7</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
+	<dependency>
+		<groupId>javax.activation</groupId>
+		<artifactId>activation</artifactId>
+		<version>1.1.1</version>
+	</dependency>
+ 		
+ 		
+ 		
+ 		
         <!-- http://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
         <dependency>
             <groupId>org.springframework.security</groupId>

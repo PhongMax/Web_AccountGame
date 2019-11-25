@@ -26,7 +26,7 @@
 		<div class="container c-size-md ">
 			<div class="col-md-12" style="min-height: 550px;">
 
-				<div class="page-title">Confirmation</div>
+				<div class="page-title" style="color: green">Confirmation</div>
 
 
 
