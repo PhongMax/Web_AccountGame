@@ -27,6 +27,11 @@
             <div class="m-t-20 visible-sm visible-xs"></div>
             <div class="container c-size-md ">
                 <div class="col-md-12">
+                
+                <br>
+                <br>
+      
+            
                     <div class="text-center" style="text-align: center; margin-top: -128px;padding: 5px;
                     border: 2px solid black;">
                         <h3 class="c-font-bold c-font-28">

@@ -1,11 +1,13 @@
 package com.shopmoba.controller;
  
 import java.io.IOException;
- 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,7 +47,9 @@ public class MainController {
     @Autowired
     private CustomerInfoValidator customerInfoValidator;
     
- 
+    @Autowired
+	public JavaMailSender emailSender;
+    
     @InitBinder
     public void myInitBinder(WebDataBinder dataBinder) {
         Object target = dataBinder.getTarget();
@@ -217,6 +221,15 @@ public class MainController {
         return "shoppingCartConfirmation";
     }
  
+    private  void sendMailToCustomer(String mailAddress, String text) {
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setFrom("phongpv20153@gmail.com");
+		message.setTo(mailAddress);
+		message.setSubject("SHOPMOBAVIET - Shop bán account uy tín, giá rẻ hàng đầu Việt Nam");
+		message.setText(text);
+		emailSender.send(message);
+	}
+    
     // POST: Send Cart (Save).
     @RequestMapping(value = { "/shoppingCartConfirmation" }, method = RequestMethod.POST)
     // Avoid UnexpectedRollbackException (See more explanations)
@@ -243,7 +256,14 @@ public class MainController {
          
         // Store Last ordered cart to Session.
         Utils.storeLastOrderedCartInSession(request, cartInfo);
- 
+        String emailCustomer = cartInfo.getCustomerInfo().getEmail();
+        
+        
+        
+        
+        String text = "Thank you for Shopping  :-) , Your order will come in 1 day , please keep phone to get amazing product !"; 
+        this.sendMailToCustomer(emailCustomer, text);
+        model.addAttribute("email", emailCustomer);
         // Redirect to successful page.
         return "redirect:/shoppingCartFinalize";
     }

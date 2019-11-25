@@ -14,6 +14,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -76,6 +78,26 @@ public class ApplicationContextConfig {
          
         return commonsMultipartResolver;
     }
+    
+    @Bean(name="mailSender")
+	public JavaMailSender getJavaMailSender() {
+		
+		 JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+	        mailSender.setHost("smtp.gmail.com");
+	        mailSender.setPort(587);
+	        mailSender.setDefaultEncoding("UTF-8");
+	        mailSender.setUsername("phongpv20153@gmail.com");
+	        mailSender.setPassword("01674806121");
+	 
+	        Properties props = mailSender.getJavaMailProperties();
+	        props.put("mail.transport.protocol", "smtp");
+	        props.put("mail.smtp.auth", "true");
+	        props.put("mail.smtp.starttls.enable", "true");
+	        props.put("mail.debug", "true");
+	 
+	        return mailSender;
+		
+	}
  
     @Bean(name = "dataSource")
     public DataSource getDataSource() {
@@ -124,11 +146,7 @@ public class ApplicationContextConfig {
         return transactionManager;
     }
  
-  /*  @Bean(name = "accountDAO")
-    public AccountDAO getApplicantDAO() {
-        return new AccountDAOImpl();
-    }
- */
+ 
     @Bean(name = "productDAO")
     public ProductDAO getProductDAO() {
         return new ProductDAOImpl();
