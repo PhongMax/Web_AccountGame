@@ -27,8 +27,8 @@
 				
 					<br>
 					<h3>We have sent order information to the Email address. To be sure, please check !</h3>
-					<h3>Thank you for Order</h3>
-					Your order number is: ${lastOrderedCart.orderNum}
+					<h3>Thank you for Order ! Your order number is: ${lastOrderedCart.orderNum}</h3>
+					
 				</div>
 
 				
