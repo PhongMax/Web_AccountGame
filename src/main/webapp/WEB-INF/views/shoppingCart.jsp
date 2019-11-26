@@ -52,16 +52,12 @@
 
 									</li>
 									<li>Name: ${cartLineInfo.productInfo.name}</li>
-									<li>Price: <span class="price"> <fmt:formatNumber
-												value="${cartLineInfo.productInfo.price}" type="currency" />
+									<li>Price: <span class="price">${cartLineInfo.productInfo.price} đ
 
 									</span></li>
 									<li>Quantity: <form:input
 											path="cartLines[${varStatus.index}].quantity" /></li>
-									<li>Subtotal: <span class="subtotal"> <fmt:formatNumber
-												value="${cartLineInfo.amount}" type="currency" />
-
-									</span>
+									<li>Subtotal: <span class="subtotal">${cartLineInfo.amount} đ</span>
 									</li>
 									<li><a
 										href="${pageContext.request.contextPath}/shoppingCartRemoveProduct?code=${cartLineInfo.productInfo.code}">

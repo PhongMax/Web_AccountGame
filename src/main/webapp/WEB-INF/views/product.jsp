@@ -38,63 +38,81 @@
                   					</c:if>
                   					 <c:if test="${empty productForm.code}">
 										<form:input path="code" />
+											<br>
+											<small  class="form-text text-muted">
+												<form:errors path="code" class="error-message" />
+											</small>
 										<form:hidden path="newProduct" />
+										
 									</c:if>
 									
 								</td>
-							
+								
 						</tr>
-						<tr>
-							<form:errors path="code" class="error-message" />
-						</tr>
+						
 
 						<tr>
 							<td>Name </td>
-							<td><form:input path="name" /> 
+							<td>
+								<form:input path="name" />
+								<br>
+									<small  class="form-text text-muted">
+										<form:errors path="name" class="error-message" />
+									</small> 
 							</td>		
 							
 						</tr>
-						<tr>
-						<form:errors path="name" class="error-message" />
-						</tr>
+						
 						
 
 						<tr>
 							<td>Price </td>
-							<td ><form:input path="price" /></td>
+							<td>
+								<form:input path="price" />
+								<br>
+									<small  class="form-text text-muted">
+										<form:errors path="price" class="error-message" />
+									</small> 
+							</td>	
 							
-						</tr>
-						
-						<tr>
-							<form:errors path="price" class="error-message" />
 						</tr>
 						
 						
 						<tr>
 							<td>Hero Number </td>
-							<td><form:input path="nHeros" /></td>
+							<td>
+								<form:input path="nHeros" />
+								<br>
+									<small  class="form-text text-muted">
+										<form:errors path="nHeros" class="error-message" />
+									</small> 
+							</td>	
 						</tr>
-						<tr>							
-						<form:errors path="nHeros" class="error-message" />
-						</tr>
-						
+					
 						<tr>
 							<td>Skin Number </td>
-							<td><form:input path="nSkins" /></td>
+							<td>
+								<form:input path="nSkins" />
+								<br>
+									<small  class="form-text text-muted">
+										<form:errors path="nSkins" class="error-message" />
+									</small> 
+							</td>	
 						</tr>
-						<tr>
-						<form:errors path="nSkins" class="error-message" />
-						</tr>
-						
+					
 						<tr>
 							<td>Round Number </td>
-							<td><form:input path="nRounds" /></td>
+							<td>
+								<form:input path="nRounds" />
+								<br>
+									<small  class="form-text text-muted">
+										<form:errors path="nRounds" class="error-message" />
+									</small> 
+							</td>	
 							
 						</tr>
 						
-						<tr>
-						<form:errors path="nRounds" class="error-message" />
-						</tr>
+						
 						<tr>
 							<td>Gemstone </td>
 							<td><select id="isGemstone" name="isGemstone" class="form-control" style=" width: 90px;">

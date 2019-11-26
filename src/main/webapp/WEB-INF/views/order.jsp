@@ -34,9 +34,7 @@
 					</ul>
 					<h3>Order Summary:</h3>
 					<ul>
-						<li>Total: <span class="total"> <fmt:formatNumber
-									value="${orderInfo.amount}" type="currency" />
-						</span></li>
+						<li>Total: <span class="total">${orderInfo.amount} đ</span></li>
 					</ul>
 				</div>
 
@@ -55,10 +53,8 @@
 							<td>${orderDetailInfo.productCode}</td>
 							<td>${orderDetailInfo.productName}</td>
 							<td>${orderDetailInfo.quanity}</td>
-							<td><fmt:formatNumber value="${orderDetailInfo.price}"
-									type="currency" /></td>
-							<td><fmt:formatNumber value="${orderDetailInfo.amount}"
-									type="currency" /></td>
+							<td>${orderDetailInfo.price} đ</td>
+							<td>${orderDetailInfo.amount} đ</td>
 						</tr>
 					</c:forEach>
 				</table>

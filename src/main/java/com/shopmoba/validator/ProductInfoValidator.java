@@ -46,6 +46,24 @@ public class ProductInfoValidator implements Validator {
                     errors.rejectValue("code", "Duplicate.productForm.code");
                 }
             }
+            
+           
+        }
+        if (productInfo.getPrice() < 0)
+        {
+        	 errors.rejectValue("price", "Invalid.productForm.price");
+        }
+        if (productInfo.getnHeros() < 0)
+        {
+        	 errors.rejectValue("nHeros", "Invalid.productForm.hero");
+        }
+        if (productInfo.getnSkins() < 0)
+        {
+        	 errors.rejectValue("nSkins", "Invalid.productForm.skin");
+        }
+        if (productInfo.getnRounds() < 0)
+        {
+        	 errors.rejectValue("nRounds", "Invalid.productForm.round");
         }
     }
  

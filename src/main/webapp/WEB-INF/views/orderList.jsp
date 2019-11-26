@@ -50,7 +50,7 @@
                <td>${orderInfo.customerEmail}</td>
                <td>${orderInfo.customerPhone }</td>
                <td style="color:red;">
-                  <fmt:formatNumber value="${orderInfo.amount}" type="currency"/>
+               ${orderInfo.amount} đ
                </td>
                <td><a href="${pageContext.request.contextPath}/order?orderId=${orderInfo.id}">
                   View</a></td>
