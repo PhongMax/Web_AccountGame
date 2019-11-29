@@ -22,7 +22,7 @@
 
 		<div class="container  ">
 			<div class="col-md-12" style="min-height: 550px;">
-				<div class="page-title">Order Info</div>
+				<div class="page-title"  style="color: blue;" >Order Info</div>
 
 				<div class="customer-info-container">
 					<h3>Customer Information:</h3>

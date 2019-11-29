@@ -31,10 +31,10 @@ public class ProductInfoValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "NotEmpty.productForm.name");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "price", "NotEmpty.productForm.price");
         
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nHeros", "NotEmpty.productForm.hero");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nRounds", "NotEmpty.productForm.round");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nSkins", "NotEmpty.productForm.skin");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "isGemstone", "NotEmpty.productForm.gemstone");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nHeros", "NotEmpty.productForm.nHeros");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nRounds", "NotEmpty.productForm.nRounds");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nSkins", "NotEmpty.productForm.nSkins");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "isGemstone", "NotEmpty.productForm.isGemstone");
         
         String code = productInfo.getCode();
         if (code != null && code.length() > 0) {

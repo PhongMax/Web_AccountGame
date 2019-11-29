@@ -23,7 +23,7 @@
 		<div class="container c-size-md ">
 			<div class="col-md-12" style="min-height: 550px;">
 
-				<div class="page-title">Access Denied!</div>
+				<div class="page-title" style="color: red;" >Access Denied!</div>
 
 				<h3 style="color: red;">Sorry, you can not access this page!</h3>
 

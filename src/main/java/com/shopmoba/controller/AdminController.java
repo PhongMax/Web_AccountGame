@@ -157,6 +157,25 @@ public class AdminController {
         model.addAttribute("productForm", productInfo);
         return "product";
     }
+    
+ // GET: delete product.
+    @RequestMapping(value = { "/deleteProduct" }, method = RequestMethod.GET)
+    public String deleteProduct(Model model, @RequestParam(value = "code") String code) {
+        ProductInfo productInfo = null;
+ 
+        if (code != null && code.length() > 0) {
+            productInfo = productDAO.findProductInfo(code);
+        }
+        if (productInfo == null) {
+        	 model.addAttribute("message", "delete failed  !!!");
+        	 return "productList";
+        }else
+        {
+            this.productDAO.deleteProduct(code);
+
+        }
+        return "redirect:/productList";
+    }
  
     // POST: Save product
     @RequestMapping(value = { "/product" }, method = RequestMethod.POST)
@@ -199,6 +218,25 @@ public class AdminController {
         model.addAttribute("orderInfo", orderInfo);
  
         return "order";
+    }
+    
+    
+    @RequestMapping(value = { "/deleteOrder" }, method = RequestMethod.GET)
+    public String orderDelete(Model model, @RequestParam("orderId") String orderId) {
+        OrderInfo orderInfo = null;
+        if (orderId != null) {
+            orderInfo = this.orderDAO.getOrderInfo(orderId);
+        }
+        if (orderInfo == null) {
+        	model.addAttribute("message", "delete failed");
+            return "orderList";
+        }else
+        {
+        	this.orderDAO.deleteOrder(orderId);
+        }
+        
+ 
+        return "redirect:/orderList";
     }
     
 }

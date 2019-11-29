@@ -21,4 +21,5 @@ public interface ProductDAO {
  
     public void save(ProductInfo productInfo);
     
+    public void deleteProduct(String code);
 }

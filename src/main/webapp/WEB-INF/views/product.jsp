@@ -34,7 +34,11 @@
 								<td style="color: #351594;">
 									<c:if test="${not empty productForm.code}">
 										<form:hidden path="code" />
-                       					${productForm.code}
+                       					${productForm.code}<br>
+											<small  class="form-text text-muted">
+												<form:errors path="code" class="error-message" />
+											</small>
+                       					
                   					</c:if>
                   					 <c:if test="${empty productForm.code}">
 										<form:input path="code" />

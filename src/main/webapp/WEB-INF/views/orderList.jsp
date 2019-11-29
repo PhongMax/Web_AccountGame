@@ -25,7 +25,7 @@
 		<div class="container c-size-md ">
 			<div class="col-md-12" style="min-height: 550px;">
 				<div class="page-title" style="color: blue;"><s:message code="orderList.title" /></div>
- 
+ 				<div class="page-title" style="color: blue; text-align: center">${message }</div>
    <div><s:message code="orderList.TotalOrderCount" /> : ${paginationResult.totalRecords}</div>
   
    <table border="1" style="width:100%">
@@ -38,6 +38,7 @@
            <th><s:message code="orderList.phone" /></th>
            <th><s:message code="orderList.total" /></th>
            <th><s:message code="orderList.view" /></th>
+           <th><s:message code="orderList.delete" /></th>
        </tr>
        <c:forEach items="${paginationResult.list}" var="orderInfo">
            <tr>
@@ -53,7 +54,11 @@
                ${orderInfo.amount} đ
                </td>
                <td><a href="${pageContext.request.contextPath}/order?orderId=${orderInfo.id}">
-                  View</a></td>
+                  View</a>
+               </td>
+              <td><a onclick="if (!(confirm('Are you sure want to delete this order?'))) return false" href="${pageContext.request.contextPath}/deleteOrder?orderId=${orderInfo.id}">
+                  Delete</a>   
+               </td>
            </tr>
        </c:forEach>
    </table>

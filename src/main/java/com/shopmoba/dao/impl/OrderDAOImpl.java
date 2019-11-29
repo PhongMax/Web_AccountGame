@@ -126,5 +126,23 @@ public class OrderDAOImpl implements OrderDAO {
  
         return query.list();
     }
+
+	@Override
+	public void deleteOrder(String orderID) {
+		 Order order= null;
+		 try {
+			 	order = findOrder(orderID);
+			    Session session = sessionFactory.getCurrentSession();
+			    session.delete(order);
+			    System.out.println("delete order successful " + orderID );
+			    return;
+			  } catch (RuntimeException re) {
+				
+				System.out.println("delete order failed " + orderID );
+			    throw re;
+			  }
+	}
+    
+    
  
 }

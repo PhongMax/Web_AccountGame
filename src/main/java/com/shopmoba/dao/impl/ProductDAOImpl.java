@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.shopmoba.dao.ProductDAO;
+import com.shopmoba.model.Order;
 import com.shopmoba.model.Product;
 import com.shopmoba.service.PaginationResult;
 import com.shopmoba.service.ProductInfo;
@@ -71,7 +72,7 @@ public class ProductDAOImpl implements ProductDAO {
             this.sessionFactory.getCurrentSession().persist(product);
         }
 
-        // Nếu có lỗi tại DB, ngoại lệ sẽ ném ra ngay lập tức
+        // Nếu có lỗi tại DB, ngoại lệ sẽ ném ra ngay lập tức thay cho try catch
         this.sessionFactory.getCurrentSession().flush();
     }
  
@@ -101,5 +102,21 @@ public class ProductDAOImpl implements ProductDAO {
     public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage) {
         return queryProducts(page, maxResult, maxNavigationPage, null);
     }
+
+	@Override
+	public void deleteProduct(String code) {
+		Product product= null;
+		 try {
+			 	product = findProduct(code);
+			    Session session = sessionFactory.getCurrentSession();
+			    session.delete(product);
+			    System.out.println("delete product successful " + code );
+			    return;
+			  } catch (RuntimeException re) {
+				
+				System.out.println("delete product failed " + code );
+			    throw re;
+			  }
+	}
     
 }

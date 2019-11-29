@@ -19,8 +19,6 @@
     <jsp:include page="_header.jsp" />
 
 
-
-
     <!-- BEGIN: PAGE CONTAINER -->
     <div class="c-layout-page background-productlist">
         <!-- BEGIN: PAGE CONTENT -->
@@ -28,6 +26,7 @@
         <div class="container  ">
             <div class="col-md-12" style="min-height: 550px;  ">
                 <div class="page-title" >Product List</div>
+                <div class="page-title" style="text-align: center;" >${message }</div>
                 <c:forEach items="${paginationProducts.list}" var="prodInfo">
                     <div class="product-preview-container" >
                         <ul>
@@ -57,7 +56,7 @@
 					</li>
 
 
-							<li><a href="${pageContext.request.contextPath}/buyProduct?code=${prodInfo.code}">
+					<li><a href="${pageContext.request.contextPath}/buyProduct?code=${prodInfo.code}">
                             Buy Now</a></li>
 
 
@@ -65,9 +64,19 @@
 
                     <!-- For Manager edit Product -->
                     <security:authorize access="hasRole('ROLE_MANAGER')">
-                        <li><a style="color:red;"
+                        <li>
+                        		<a style="color:red;"
                                 href="${pageContext.request.contextPath}/product?code=${prodInfo.code}">
-                                Edit Product</a></li>
+                                Edit Product
+                                </a>
+                        </li>
+                                
+                        <li>
+                        		<a style="color:red;" onclick="if (!(confirm('Are you sure want to delete this product?'))) return false"
+                                href="${pageContext.request.contextPath}/deleteProduct?code=${prodInfo.code}">
+                                Delete Product
+                                </a>
+                       </li>
                     </security:authorize>
                     </ul>
 

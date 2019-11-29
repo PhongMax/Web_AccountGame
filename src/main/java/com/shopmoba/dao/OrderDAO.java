@@ -18,4 +18,5 @@ public interface OrderDAO {
     
     public List<OrderDetailInfo> listOrderDetailInfos(String orderId);
  
+    public void deleteOrder(String orderID);
 }
