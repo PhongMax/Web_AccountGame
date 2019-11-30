@@ -115,7 +115,6 @@ public class ProductDAOImpl implements ProductDAO {
 			  } catch (RuntimeException re) {
 				
 				System.out.println("delete product failed " + code );
-			    throw re;
 			  }
 	}
     

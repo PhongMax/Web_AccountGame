@@ -160,21 +160,32 @@ public class AdminController {
     
  // GET: delete product.
     @RequestMapping(value = { "/deleteProduct" }, method = RequestMethod.GET)
-    public String deleteProduct(Model model, @RequestParam(value = "code") String code) {
+    public String deleteProduct(Model model, @RequestParam(value = "code", defaultValue = "") String code) {
         ProductInfo productInfo = null;
  
         if (code != null && code.length() > 0) {
             productInfo = productDAO.findProductInfo(code);
+           
         }
         if (productInfo == null) {
         	 model.addAttribute("message", "delete failed  !!!");
         	 return "productList";
         }else
         {
+        	boolean check = this.orderDAO.checkProductCode(code);
+        	if (!check)
+        	{
             this.productDAO.deleteProduct(code);
+        	}
+        	else
+        	{
+        		model.addAttribute("message", "delete failed  !!! Product has an order !!!");
+        		 return "productList";
+        	}
 
         }
-        return "redirect:/productList";
+        model.addAttribute("message", "delete successful  !!! Product " + code + " has been deteted !!!");
+        return "productList";
     }
  
     // POST: Save product

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
  
 import org.hibernate.query.Query;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -141,6 +142,35 @@ public class OrderDAOImpl implements OrderDAO {
 				System.out.println("delete order failed " + orderID );
 			    throw re;
 			  }
+	}
+
+	@Override
+	public boolean checkProductCode(String code) {
+		
+    	try {
+    	    Session session = sessionFactory.getCurrentSession();
+    	    String hql = "FROM OrderDetail od WHERE od.product.code = '" + code + "'";
+    	    
+    	    @SuppressWarnings("unchecked")
+			List<OrderDetail> ls =  session.createQuery(hql).list();
+    	    if ( ls.isEmpty())
+    	    {
+    	    	return false;
+    	    }
+    	    else 
+    	    {
+    	    	return true;
+    	    }
+    	   
+		} catch (HibernateException hibernateEx) {
+			hibernateEx.printStackTrace();
+			return false;
+		}catch(Exception ex)
+    	{
+			ex.printStackTrace();
+			return false;
+    	}
+    
 	}
     
     
