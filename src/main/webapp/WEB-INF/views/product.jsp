@@ -31,7 +31,7 @@
 					<table style="text-align: left;">
 						<tr>
 								<td>Code </td>
-								<td style="color: #351594;">
+								<td style="color: #351594;  "  >
 									<c:if test="${not empty productForm.code}">
 										<form:hidden path="code" />
                        					${productForm.code}<br>
@@ -41,7 +41,7 @@
                        					
                   					</c:if>
                   					 <c:if test="${empty productForm.code}">
-										<form:input path="code" />
+										<form:input path="code" style=" height: 35.99306px; width: 233.99306px;"  />
 											<br>
 											<small  class="form-text text-muted">
 												<form:errors path="code" class="error-message" />
@@ -57,8 +57,8 @@
 
 						<tr>
 							<td>Name </td>
-							<td>
-								<form:input path="name" />
+							<td >
+								<form:input path="name" style=" height: 35.99306px; width: 233.99306px;" />
 								<br>
 									<small  class="form-text text-muted">
 										<form:errors path="name" class="error-message" />
@@ -72,7 +72,7 @@
 						<tr>
 							<td>Price </td>
 							<td>
-								<form:input path="price" />
+								<form:input path="price" style=" height: 35.99306px; width: 233.99306px;"  />
 								<br>
 									<small  class="form-text text-muted">
 										<form:errors path="price" class="error-message" />
@@ -85,7 +85,7 @@
 						<tr>
 							<td>Hero Number </td>
 							<td>
-								<form:input path="nHeros" />
+								<form:input path="nHeros" style=" height: 35.99306px; width: 233.99306px;"  />
 								<br>
 									<small  class="form-text text-muted">
 										<form:errors path="nHeros" class="error-message" />
@@ -96,7 +96,7 @@
 						<tr>
 							<td>Skin Number </td>
 							<td>
-								<form:input path="nSkins" />
+								<form:input path="nSkins" style=" height: 35.99306px; width: 233.99306px;"  />
 								<br>
 									<small  class="form-text text-muted">
 										<form:errors path="nSkins" class="error-message" />
@@ -107,7 +107,7 @@
 						<tr>
 							<td>Round Number </td>
 							<td>
-								<form:input path="nRounds" />
+								<form:input path="nRounds" style=" height: 35.99306px; width: 233.99306px;"  />
 								<br>
 									<small  class="form-text text-muted">
 										<form:errors path="nRounds" class="error-message" />
@@ -118,7 +118,7 @@
 						
 						
 						<tr>
-							<td>Gemstone </td>
+							<td>Gem stone </td>
 							<td><select id="isGemstone" name="isGemstone" class="form-control" style=" width: 90px;">
 								<option value="true">Có</option>
 								<option value="false" selected="selected">Không</option>

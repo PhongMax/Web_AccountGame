@@ -29,8 +29,10 @@
 					<div class="item">
 						<a href="#" >
 							<img src="upload-usr/images/pAdLWkTeVY_1558777957.jpg" alt="tc">
+							
 						</a>
 					</div>
+					
 
 				</div>
 			</div>

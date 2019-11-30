@@ -24,7 +24,7 @@ public class ProductInfoValidator implements Validator {
  
     @Override
     public void validate(Object target, Errors errors) {
-        ProductInfo productInfo = (ProductInfo) target;
+        ProductInfo productForm = (ProductInfo) target;
  
         // Check the fields of ProductInfo class.
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "code", "NotEmpty.productForm.code");
@@ -36,35 +36,37 @@ public class ProductInfoValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nSkins", "NotEmpty.productForm.nSkins");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "isGemstone", "NotEmpty.productForm.isGemstone");
         
-        String code = productInfo.getCode();
+        String code = productForm.getCode();
         if (code != null && code.length() > 0) {
             if (code.matches("\\s+")) {
                 errors.rejectValue("code", "Pattern.productForm.code");
-            } else if(productInfo.isNewProduct()) {
+            } else if(productForm.isNewProduct()) {
                 Product product = productDAO.findProduct(code);
                 if (product != null) {
                     errors.rejectValue("code", "Duplicate.productForm.code");
+                }
+                
+                if (productForm.getPrice() < 0)
+                {
+                	 errors.rejectValue("price", "Invalid.productForm.price");
+                }
+                if (productForm.getnHeros() < 0)
+                {
+                	 errors.rejectValue("nHeros", "Invalid.productForm.hero");
+                }
+                if (productForm.getnSkins() < 0)
+                {
+                	 errors.rejectValue("nSkins", "Invalid.productForm.skin");
+                }
+                if (productForm.getnRounds() < 0)
+                {
+                	 errors.rejectValue("nRounds", "Invalid.productForm.round");
                 }
             }
             
            
         }
-        if (productInfo.getPrice() < 0)
-        {
-        	 errors.rejectValue("price", "Invalid.productForm.price");
-        }
-        if (productInfo.getnHeros() < 0)
-        {
-        	 errors.rejectValue("nHeros", "Invalid.productForm.hero");
-        }
-        if (productInfo.getnSkins() < 0)
-        {
-        	 errors.rejectValue("nSkins", "Invalid.productForm.skin");
-        }
-        if (productInfo.getnRounds() < 0)
-        {
-        	 errors.rejectValue("nRounds", "Invalid.productForm.round");
-        }
+       
     }
  
 }

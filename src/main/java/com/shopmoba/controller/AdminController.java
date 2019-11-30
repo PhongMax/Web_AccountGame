@@ -142,7 +142,7 @@ public class AdminController {
         return "orderList";
     }
  
-    // GET: Show product.
+    // GET: Show product. 
     @RequestMapping(value = { "/product" }, method = RequestMethod.GET)
     public String product(Model model, @RequestParam(value = "code", defaultValue = "") String code) {
         ProductInfo productInfo = null;
@@ -158,6 +158,33 @@ public class AdminController {
         return "product";
     }
     
+    
+    // POST: Save product
+    @RequestMapping(value = { "/product" }, method = RequestMethod.POST)
+    // Avoid UnexpectedRollbackException 
+    @Transactional(propagation = Propagation.NEVER)
+    public String productSave(Model model,
+            @ModelAttribute("productForm") @Validated ProductInfo productInfo, 
+            BindingResult result, 
+            final RedirectAttributes redirectAttributes) {
+ 
+        if (result.hasErrors()) {
+            return "product";
+        }
+        try {
+            productDAO.save(productInfo);
+        } catch (Exception e) {
+            // Need: Propagation.NEVER?
+            String message = e.getMessage();
+            model.addAttribute("message", message);
+            // Show product form.
+            return "product";
+ 
+        }
+        return "redirect:/productList";
+    }
+ 
+ 
  // GET: delete product.
     @RequestMapping(value = { "/deleteProduct" }, method = RequestMethod.GET)
     public String deleteProduct(Model model, @RequestParam(value = "code", defaultValue = "") String code) {
@@ -188,32 +215,7 @@ public class AdminController {
         return "productList";
     }
  
-    // POST: Save product
-    @RequestMapping(value = { "/product" }, method = RequestMethod.POST)
-    // Avoid UnexpectedRollbackException 
-    @Transactional(propagation = Propagation.NEVER)
-    public String productSave(Model model,
-            @ModelAttribute("productForm") @Validated ProductInfo productInfo, 
-            BindingResult result, 
-            final RedirectAttributes redirectAttributes) {
- 
-        if (result.hasErrors()) {
-            return "product";
-        }
-        try {
-            productDAO.save(productInfo);
-        } catch (Exception e) {
-            // Need: Propagation.NEVER?
-            String message = e.getMessage();
-            model.addAttribute("message", message);
-            // Show product form.
-            return "product";
- 
-        }
-        return "redirect:/productList";
-    }
- 
- 
+
     @RequestMapping(value = { "/order" }, method = RequestMethod.GET)
     public String orderView(Model model, @RequestParam("orderId") String orderId) {
         OrderInfo orderInfo = null;
